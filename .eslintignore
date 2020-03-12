@@ -1,0 +1,8 @@
+coverage/*
+dist/*
+test/tests.entry.js
+node_modules/*
+README.md
+stats.json
+jest-test-results.json
+.vscode/*
