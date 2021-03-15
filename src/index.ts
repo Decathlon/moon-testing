@@ -36,16 +36,16 @@ export class AxiosClient {
 }
 
 export function mockAxiosClientConstructor(ClientFactory = AxiosClient): void {
-  Axios.create = jest.fn().mockImplementation(({ baseUrl }) => {
+  Axios.create = ({ baseUrl }) => {
     return new ClientFactory(baseUrl);
-  });
+  };
 }
 
 mockAxiosClientConstructor(AxiosClient);
 
 export const cancelToken = { cancel: () => jest.fn() };
 
-StaticAxios.CancelToken.source = jest.fn().mockReturnValue(cancelToken);
+StaticAxios.CancelToken.source = () => cancelToken;
 
 export { default as MoonClient } from "./moon-client";
 export * from "./moon-client";
